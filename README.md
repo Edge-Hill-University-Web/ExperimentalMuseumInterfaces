@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/walshd/ExperimentalMuseumInterfaces">
+  <a href="https://github.com/Edge-Hill-University-Web/ExperimentalMuseumInterfaces/">
     <img src="images/emilogo.png" alt="emi Logo" width="80" height="80">
   </a>
 
@@ -12,10 +12,10 @@
   <p align="center">
     EMI is a holding page for the research conducted by Dave Walsh and others looking at the research areas of Generous interfaces and rich prospect browsers to make exploring Museum Collections Online easier and more enjoyable.
     <br />
-    <a href="https://github.com/walshd/ExperimentalMuseumInterfaces"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Edge-Hill-University-Web/ExperimentalMuseumInterfaces/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/walshd/ExperimentalMuseumInterfaces">View Demo</a>
+    <a href="https://experimentalmuseuminterfaces.computing.edgehill.ac.uk/">View Demo</a>
   </p>
 </div>
 
@@ -37,7 +37,7 @@
 
 ## About The Project
 
-![Product Name Screen Shot](https://raw.githubusercontent.com/walshd/ExperimentalMuseumInterfaces/refs/heads/main/images/screenshot.png)
+![Product Name Screen Shot](images/screenshot.png)
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `Experimental Museum Interfaces`, `project_description`
 
@@ -56,6 +56,6 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 Your Name - [@twitter_handle](https://twitter.com/walsh_d) - walshd@edgehill.ac.uk
 
-Project Link: [https://github.com/walshd/ExperimentalMuseumInterfaces](https://github.com/walshd/ExperimentalMuseumInterfaces)
+Project Link: [https://github.com/Edge-Hill-University-Web/ExperimentalMuseumInterfaces/](https://github.com/Edge-Hill-University-Web/ExperimentalMuseumInterfaces/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
