@@ -389,13 +389,13 @@ nav ul li a:hover {
 }
 
 /* Styling for the Links Inside h3 */
-.research-item h3 a {
+.research-item h3 a, .about-item h3 a {
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
-.research-item h3 a:hover {
+.research-item h3 a:hover, .about-item h3 a:hover {
     color: #1976d2;
     text-decoration: underline;
 }
