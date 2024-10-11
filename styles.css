@@ -29,6 +29,24 @@ body {
     font-size: 18px;
 }
 
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1976d2;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -60,12 +78,13 @@ header .container {
     margin-left: -6px;
 }
 
-.logo h1 {
+.logo p:first-child {
     font-family: 'InreaSerif', serif;
     font-size: 64px;
     margin: 0;
     line-height: 1;
 }
+
 
 .logo p {
     font-size: 16px;
@@ -126,7 +145,7 @@ nav ul li a:hover {
     align-items: start;
 }
 
-.text-content h2 {
+.text-content h2, .text-content h1 {
     font-size: 42px;
     margin-bottom: 60px;
 }
@@ -152,7 +171,7 @@ nav ul li a:hover {
 
 .newsletter input {
     padding: 10px;
-    width: calc(78% - 20px);
+    width: calc(75% - 20px);
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -202,7 +221,7 @@ nav ul li a:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.experiment-card h3 {
+.experiment-card h2, .experiment-card h3 {
     font-size: 30px;
     margin-bottom: 10px;
     color: inherit;
@@ -239,7 +258,7 @@ nav ul li a:hover {
     background-color: #e8f5e9;
 }
 
-.experiment-card:nth-child(1) h3 {
+.experiment-card:nth-child(1) h2, .experiment-card:nth-child(1) h3 {
     color: #2e7d32;
 }
 
@@ -255,12 +274,12 @@ nav ul li a:hover {
     background-color: #fff3e0;
 }
 
-.experiment-card:nth-child(2) h3 {
-    color: #ef6c00;
+.experiment-card:nth-child(2) h2, .experiment-card:nth-child(2) h3 {
+    color: #C62828;
 }
 
 .experiment-card:nth-child(2) .button {
-    background-color: #ef6c00;
+    background-color: #C62828;
 }
 
 .experiment-card:nth-child(2) .button:hover {
@@ -271,7 +290,7 @@ nav ul li a:hover {
     background-color: #f3e5f5;
 }
 
-.experiment-card:nth-child(3) h3 {
+.experiment-card:nth-child(3) h2, .experiment-card:nth-child(3) h3 {
     color: #6a1b9a;
 }
 
@@ -390,7 +409,7 @@ nav ul li a:hover {
 
 .research-item .date {
     font-size: 12px;
-    color: #999;
+    color: #666;
     margin-top: 20px;
 }
 
@@ -446,7 +465,7 @@ nav ul li a:hover {
 .collection-exploration-section h2 {
     font-size: 3.125rem; /* 50px equivalent */
     font-weight: bold;
-    background-color: #42a5f5;
+    background-color: #2A99F4;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 5px;

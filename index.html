@@ -2,52 +2,54 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQEVMTYMZ8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WQEVMTYMZ8"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-WQEVMTYMZ8');
-</script>
+    gtag('config', 'G-WQEVMTYMZ8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experimental Museum Interfaces</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="container">
             <div class="logo">
-                <h1>EMI</h1>
+                <p>EMI</p>
                 <p>Experimental Museum Interfaces</p>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Experiments</a></li>
-                    <li><a href="#">Literature Review</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="experiments.html">Experiments</a></li>
+                    <li><a href="literature.html">Literature Review</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     
 
-    <main>
+    <main id="main-content" tabindex="-1">
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
                     <div class="text-content">
-                        <h2>Exploring the Future of Museum Website Interactions</h2>
+                        <h1>Exploring the Future of Museum Website Interactions</h1>
                         <p>Welcome to the Experimental Museum Interfaces (EMI) platform, where we explore new ways to engage with museum collections. Our research focuses on designing innovative interfaces that make interactions with vast collections more valuable, enjoyable, and intuitive. By rethinking how users search, browse, and experience collections, we aim to push the boundaries of Human-Computer Interaction (HCI) in museum contexts.</p>
                         <p>EMI is a hub for collaborative research. It serves as both a resource for ongoing academic work and a test bed for experimental approaches. Here, you’ll find an evolving collection of experiments that explore different ways to interact with museum collections, driven by principles of generous interfaces, rich prospect browsers, and recommendation systems.</p>
                     </div>
                     <div class="newsletter">
-                        <h3>Stay Updated with the Latest Research from EMI</h3>
+                        <h2>Stay Updated with the Latest Research from EMI</h2>
                         <p>Sign up for our newsletter to get updates on the latest experiments and research from the EMI team, exploring innovative museum interfaces and Human-Computer Interaction (HCI).</p>
                         <form>
-                            <input type="email" placeholder="Your email" required>
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" placeholder="Your email" autocomplete="email" required>
                             <button type="submit">Sign Up</button>
                         </form>
                     </div>
@@ -150,10 +152,10 @@
             <p>&copy; 2024 Experimental Museum Interfaces. All rights reserved.</p>
             <nav class="footer-nav">
                 <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="active">Terms of Use</a></li>
+                    <li><a href="accessibility.html">Accessibility</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
