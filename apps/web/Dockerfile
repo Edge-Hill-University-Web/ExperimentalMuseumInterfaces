@@ -1,15 +1,17 @@
 # ─── EMI Web — Next.js 14 ────────────────────────────────────────────────────
-# Sprint 5 will flesh this out into a working multi-stage build.
-# For Sprint 0 this file exists so docker compose config validates.
+# Multi-stage build: deps → development | builder → production (standalone).
+# --no-frozen-lockfile is intentional: no lockfile is committed until a full
+# pnpm install has been run inside the container at least once (Sprint 2).
+
+ARG PNPM_VERSION=9.15.0
 
 FROM node:20-alpine AS base
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 # ── Dependencies ──────────────────────────────────────────────────────────────
 FROM base AS deps
 COPY package.json pnpm-lock.yaml* ./
-# --no-frozen-lockfile used until Sprint 5 when the real Next.js setup generates a lockfile
 RUN pnpm install --no-frozen-lockfile
 
 # ── Development ───────────────────────────────────────────────────────────────
@@ -29,7 +31,8 @@ RUN pnpm build
 # ── Production runtime ────────────────────────────────────────────────────────
 FROM node:20-alpine AS production
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
+ARG PNPM_VERSION=9.15.0
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY --from=builder /app/.next/standalone ./

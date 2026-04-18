@@ -424,9 +424,10 @@ Two-week sprints. One-week sprints acceptable for small scopes (Sprints 0, 4, 14
 
 ---
 
-# Sprint 2: CMS core and Docker foundations
+# Sprint 2: CMS core and Docker foundations ✅ COMPLETE
 
 **Duration:** 2 weeks
+**Completed:** 2026-04-18
 **Goal:** Stand up the CMS, Postgres, and web containers cleanly. Make `docker-boot.feature` go green.
 
 ## Scope

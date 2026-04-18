@@ -1,17 +1,17 @@
 # ─── EMI CMS — Strapi v4 ─────────────────────────────────────────────────────
-# Sprint 2 will flesh this out into a working multi-stage build.
-# For Sprint 0 this file exists so docker compose config validates.
+# Multi-stage build: deps → development | builder → production.
+# --no-frozen-lockfile is intentional: no lockfile is committed until a full
+# pnpm install has been run inside the container at least once (Sprint 2).
+
+ARG PNPM_VERSION=9.15.0
 
 FROM node:20-alpine AS base
 WORKDIR /app
-
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
 # ── Dependencies ──────────────────────────────────────────────────────────────
 FROM base AS deps
 COPY package.json pnpm-lock.yaml* ./
-# --no-frozen-lockfile used until Sprint 2 when the real Strapi setup generates a lockfile
 RUN pnpm install --no-frozen-lockfile
 
 # ── Development ───────────────────────────────────────────────────────────────
@@ -30,7 +30,8 @@ RUN pnpm build
 # ── Production runtime ────────────────────────────────────────────────────────
 FROM node:20-alpine AS production
 WORKDIR /app
-RUN corepack enable && corepack prepare pnpm@latest --activate
+ARG PNPM_VERSION=9.15.0
+RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./

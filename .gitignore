@@ -45,6 +45,8 @@ docker-compose.override.yml
 # ─── Strapi ──────────────────────────────────────────────────────────────────
 apps/cms/.tmp/
 apps/cms/exports/
+apps/cms/.strapi/
+apps/cms/public/uploads/
 
 # ─── Local planning docs (contents copied to docs/) ──────────────────────────
 EMI website/

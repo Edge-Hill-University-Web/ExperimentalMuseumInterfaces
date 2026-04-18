@@ -26,6 +26,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `legacy-static/` — read-only copy of the current static site for reference during migration
 - `docs/PRD.md` and `docs/ROADMAP.md` relocated from `EMI website/` subfolder
 
+### Added — Sprint 2 (2026-04-18)
+
+- Strapi v4 config files in `apps/cms/config/`: `database.ts`, `server.ts`, `admin.ts`, `middlewares.ts`, `plugins.ts`
+- `apps/cms/src/index.ts` — Strapi lifecycle entry point (`register` / `bootstrap` stubs for Sprint 3)
+- `apps/web/app/layout.tsx` — root Next.js App Router layout with `<html lang="en">` and metadata
+- `apps/web/app/page.tsx` — home page that pings the CMS `/_health` endpoint and renders live status
+- `apps/web/app/api/health/route.ts` — `GET /api/health` liveness probe (returns `{ status: "ok" }`)
+- `apps/web/lib/cms-health.ts` — server-side CMS ping helper
+- `apps/web/styles/globals.css` — minimal base styles (reset + system font stack)
+- `apps/web/next.config.mjs` — Next.js config with `output: "standalone"` and CMS image remote pattern
+- `scripts/seed-admin.ts` — stub for Sprint 3 admin user seeding script
+- Pinned Strapi to `4.25.9` and Next.js to `14.2.15` in respective `package.json` files
+- Pinned pnpm to `9.15.0` in both Dockerfiles (replaces `pnpm@latest`)
+- Added `apps/cms/.strapi/` and `apps/cms/public/uploads/` to `.gitignore`
+
 ### Added — Sprint 1 (2026-04-18)
 
 - `tests/package.json` with full test dependency set (Vitest, Playwright, Cucumber.js, axe-core, Lighthouse CI)
