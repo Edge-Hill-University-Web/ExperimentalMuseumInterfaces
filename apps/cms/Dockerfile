@@ -3,9 +3,11 @@
 # --no-frozen-lockfile is intentional: no lockfile is committed until a full
 # pnpm install has been run inside the container at least once (Sprint 2).
 
+# Global ARG — must be re-declared inside each stage that uses it.
 ARG PNPM_VERSION=9.15.0
 
 FROM node:20-alpine AS base
+ARG PNPM_VERSION
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@${PNPM_VERSION} --activate
 
