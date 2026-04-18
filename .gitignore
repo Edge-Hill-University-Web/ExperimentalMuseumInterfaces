@@ -46,6 +46,9 @@ docker-compose.override.yml
 apps/cms/.tmp/
 apps/cms/exports/
 
+# ─── Local planning docs (contents copied to docs/) ──────────────────────────
+EMI website/
+
 # ─── Misc ────────────────────────────────────────────────────────────────────
 *.tsbuildinfo
 .turbo/
