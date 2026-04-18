@@ -1,0 +1,29 @@
+{
+  "name": "@emi/cms",
+  "version": "0.0.0",
+  "private": true,
+  "description": "EMI CMS — Strapi v4 backend",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "lint": "eslint src --ext .ts,.tsx",
+    "typecheck": "tsc --noEmit",
+    "seed:admin": "ts-node ../../scripts/seed-admin.ts",
+    "seed:content": "ts-node ../../scripts/seed-content.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@strapi/strapi": "4.x",
+    "@strapi/plugin-users-permissions": "4.x",
+    "@strapi/plugin-i18n": "4.x",
+    "better-sqlite3": "9.x",
+    "pg": "8.x"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

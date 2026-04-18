@@ -1,0 +1,81 @@
+# ─── Base compose — shared service definitions ────────────────────────────────
+# Use with docker-compose.dev.yml for local development.
+# Use with docker-compose.prod.yml for production.
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-emi}
+      POSTGRES_USER: ${POSTGRES_USER:-emi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER:-emi} -d ${POSTGRES_DB:-emi}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  cms:
+    build:
+      context: ./apps/cms
+      dockerfile: Dockerfile
+      target: development
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${POSTGRES_DB:-emi}
+      DATABASE_USERNAME: ${POSTGRES_USER:-emi}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      APP_KEYS: ${APP_KEYS:?APP_KEYS is required}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:?API_TOKEN_SALT is required}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:?ADMIN_JWT_SECRET is required}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:?TRANSFER_TOKEN_SALT is required}
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
+      HOST: ${STRAPI_HOST:-0.0.0.0}
+      PORT: ${STRAPI_PORT:-1337}
+    ports:
+      - "${STRAPI_PORT:-1337}:1337"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:1337/_health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+      target: development
+    restart: unless-stopped
+    depends_on:
+      cms:
+        condition: service_healthy
+    environment:
+      NEXT_PUBLIC_CMS_URL: ${NEXT_PUBLIC_CMS_URL:-http://localhost:1337}
+      CMS_API_TOKEN: ${CMS_API_TOKEN:-}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test:
+        ["CMD-SHELL", "wget -qO- http://localhost:3000/api/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  postgres_data:

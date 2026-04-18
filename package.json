@@ -1,0 +1,33 @@
+{
+  "name": "emi-website",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Experimental Museum Interfaces — research showcase, Edge Hill University",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml,css}\"",
+    "test": "pnpm -r test",
+    "test:unit": "pnpm -r test:unit",
+    "test:bdd": "pnpm --filter tests test:bdd",
+    "test:e2e": "pnpm --filter tests test:e2e",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,md,yml,yaml,css}": [
+      "prettier --write"
+    ]
+  }
+}

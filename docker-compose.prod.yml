@@ -1,0 +1,44 @@
+# ─── Production overrides ─────────────────────────────────────────────────────
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+# Full production runbook: docs/DEPLOYMENT.md (completed in Sprint 16)
+
+services:
+  db:
+    restart: always
+
+  cms:
+    build:
+      target: production
+    restart: always
+    environment:
+      NODE_ENV: production
+    # In production the CMS port is not exposed directly.
+    # Caddy/Nginx proxies to it on the internal Docker network.
+    ports: []
+
+  web:
+    build:
+      target: production
+    restart: always
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+    ports: []
+
+  proxy:
+    image: caddy:2-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - web
+      - cms
+
+volumes:
+  caddy_data:
+  caddy_config:

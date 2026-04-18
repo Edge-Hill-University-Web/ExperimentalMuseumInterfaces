@@ -1,0 +1,51 @@
+# ─── Dependencies ────────────────────────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+
+# ─── Build outputs ───────────────────────────────────────────────────────────
+dist/
+build/
+.next/
+out/
+.nuxt/
+.cache/
+
+# ─── Environment / secrets ───────────────────────────────────────────────────
+# Never commit real secrets. Use .env.example for the template.
+.env
+.env.local
+.env.*.local
+apps/cms/seed/.env.seed
+
+# ─── Coverage and test artefacts ─────────────────────────────────────────────
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+lighthouse-report/
+
+# ─── OS / editor noise ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/settings.json
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# ─── Docker ──────────────────────────────────────────────────────────────────
+# Local override files are not committed; use docker-compose.dev.yml instead.
+docker-compose.override.yml
+
+# ─── Strapi ──────────────────────────────────────────────────────────────────
+apps/cms/.tmp/
+apps/cms/exports/
+
+# ─── Misc ────────────────────────────────────────────────────────────────────
+*.tsbuildinfo
+.turbo/
