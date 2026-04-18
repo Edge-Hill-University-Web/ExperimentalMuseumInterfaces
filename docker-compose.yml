@@ -56,8 +56,10 @@ services:
 
   web:
     build:
-      context: ./apps/web
-      dockerfile: Dockerfile
+      # Root is the build context so pnpm can resolve workspace:* packages
+      # (e.g. @emi/shared-types) during the install step inside the image.
+      context: .
+      dockerfile: apps/web/Dockerfile
       target: development
     restart: unless-stopped
     depends_on:

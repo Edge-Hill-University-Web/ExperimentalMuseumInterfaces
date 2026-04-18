@@ -1,0 +1,45 @@
+# ─── .dockerignore ───────────────────────────────────────────────────────────
+# Applied when the build context is the monorepo root (web service).
+# Keeps the context small and prevents secrets / build artefacts from entering.
+
+# Dependencies — reinstalled inside the image
+node_modules
+**/node_modules
+
+# Build outputs
+**/dist
+**/.next
+**/build
+**/out
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+apps/cms/seed/.env.seed
+
+# Git
+.git
+.gitignore
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# OS / editor noise
+.DS_Store
+**/.DS_Store
+.idea
+.vscode
+
+# Test artefacts
+coverage
+playwright-report
+test-results
+lighthouse-report
+
+# Local planning docs
+EMI website/
+
+# Logs
+*.log
